@@ -23,13 +23,7 @@ class Config():
             self.write(self.defaults)
 
     def get(self, key):
-        if self.config.get(key, None):
-            return self.config.get(key)
-        else:
-            try:
-                return self.defaults[key]
-            except:
-                DEBUG('Error: No key {} in default config'.format(key))
+        return self.config.get(key, self.defaults.get(key))
 
     def _load(self, location):
         ''' load json from config file '''
